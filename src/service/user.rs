@@ -1,15 +1,13 @@
-use std::sync::Arc;
 use crate::repository::database::database_trait::Database;
+use std::sync::Arc;
 
 #[derive(Clone)]
-pub struct UserService{
-    database: Arc<dyn Database>
+pub struct UserService {
+    database: Arc<dyn Database>,
 }
 
 pub fn new(database: Arc<dyn Database>) -> UserService {
-    UserService {
-        database: database,
-    }
+    UserService { database: database }
 }
 
 impl UserService {

@@ -1,18 +1,16 @@
-use std::sync::Arc;
 use crate::repository::database::database_trait::Database;
+use std::sync::Arc;
 
 #[derive(Clone)]
 pub struct PostService {
-    database: Arc<dyn Database>
+    database: Arc<dyn Database>,
 }
 
 pub fn new(database: Arc<dyn Database>) -> PostService {
-    PostService {
-        database: database,
-    }
+    PostService { database: database }
 }
 
-impl PostService { 
+impl PostService {
     pub fn add_post(&self, post: &String) {
         self.database.add_post(post);
     }

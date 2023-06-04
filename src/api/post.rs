@@ -1,5 +1,5 @@
-use rocket::{self};
 use crate::service;
+use rocket::{self};
 
 #[rocket::post("/posts")]
 pub async fn add_post(service: &rocket::State<service::post::PostService>) -> String {
@@ -7,9 +7,7 @@ pub async fn add_post(service: &rocket::State<service::post::PostService>) -> St
     "Post added".to_string()
 }
 
-
 #[rocket::get("/posts")]
 pub async fn get_posts(service: &rocket::State<service::post::PostService>) -> String {
     format!("Posts: {:?}", service.get_posts())
 }
-
