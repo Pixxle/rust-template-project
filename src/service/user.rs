@@ -19,3 +19,12 @@ impl UserService {
         self.database.get_users()
     }
 }
+
+#[test]
+fn test_add_get_user() {
+    use crate::repository::database::in_mem_database;
+    let database: Arc<dyn Database> = Arc::new(in_mem_database::new());
+    let service = new(database.clone());
+    service.add_user(&"test".to_string());
+    assert_eq!(database.get_users(), vec!["test".to_string()]);
+}

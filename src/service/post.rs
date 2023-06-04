@@ -19,3 +19,12 @@ impl PostService {
         self.database.get_posts()
     }
 }
+
+#[test]
+fn test_add_get_post() {
+    use crate::repository::database::in_mem_database;
+    let database: Arc<dyn Database> = Arc::new(in_mem_database::new());
+    let service = new(database.clone());
+    service.add_post(&"test".to_string());
+    assert_eq!(database.get_posts(), vec!["test".to_string()]);
+}
