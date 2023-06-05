@@ -3,6 +3,7 @@ use std::sync::Arc;
 
 mod api;
 mod config;
+mod models;
 mod repository;
 mod service;
 
@@ -21,8 +22,20 @@ fn rocket() -> _ {
     rocket::build()
         .manage(user_service)
         .manage(post_service)
-        .mount("/", rocket::routes![api::post::get_posts])
-        .mount("/", rocket::routes![api::post::add_post])
-        .mount("/", rocket::routes![api::user::get_users])
-        .mount("/", rocket::routes![api::user::add_user])
+        .mount(
+            "/",
+            rocket::routes![
+                api::post::get_posts,
+                api::post::get_post,
+                api::post::add_post
+            ],
+        )
+        .mount(
+            "/",
+            rocket::routes![
+                api::user::get_users,
+                api::user::get_user,
+                api::user::add_user
+            ],
+        )
 }
