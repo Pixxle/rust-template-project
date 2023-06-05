@@ -1,4 +1,4 @@
-use super::database_trait::Database;
+use crate::repository::Database;
 use std::sync::Mutex;
 
 pub struct InMemDatabase {

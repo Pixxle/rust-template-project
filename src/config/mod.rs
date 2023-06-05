@@ -24,7 +24,7 @@ pub struct Configuration {
     pub environment: Environment,
 }
 
-pub fn parse_config() -> Configuration {
+pub fn parse() -> Configuration {
     println!("Parsing config");
 
     let env = config::Config::builder()

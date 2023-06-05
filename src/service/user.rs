@@ -1,4 +1,4 @@
-use crate::repository::database::database_trait::Database;
+use crate::repository::Database;
 use std::sync::Arc;
 
 #[derive(Clone)]

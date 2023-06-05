@@ -8,9 +8,9 @@ mod service;
 
 #[rocket::launch]
 fn rocket() -> _ {
-    let config = config::parse_config();
+    let config = config::parse();
 
-    let db: Arc<dyn repository::database::database_trait::Database> = match config.environment {
+    let db: Arc<dyn repository::Database> = match config.environment {
         config::Environment::Development => Arc::new(repository::database::in_mem_database::new()),
         config::Environment::Production => unimplemented!(),
     };
